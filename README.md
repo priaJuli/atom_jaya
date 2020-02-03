@@ -1,3 +1,3 @@
 # Application Skripsi Judul Atom_jaya
 
-Untuk pertanyaan, 
+Untuk pertanyaan, buat tiket issues saja, 

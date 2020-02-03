@@ -1,0 +1,4 @@
+Catatan project skripsi 95%
+1. nama variabel belum di ganti
+2. hapus php yang tidak perlu
+3. nama database ada yang harus d ganti

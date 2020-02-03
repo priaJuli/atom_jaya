@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
         include("includes/session.php");
         include("includes/connection.php");
 
@@ -47,7 +47,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php 
+        <?php
             include ('templates/menu.php');
 
         ?>
@@ -55,7 +55,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                   
+
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -73,19 +73,19 @@
                                 $result1 = mysql_query("SELECT * FROM `tbl_nilai` ORDER by `nilai_id` DESC ");
                                 $result2 = mysql_query("SELECT * FROM `tbl_nilai` ORDER by `nilai_id` DESC ");
                             ?>
-                            
+
                                 <div class="col-md-12 form-group"> <!-- 1. Form Kode Barang  -->
                                     <label class="control-label col-sm-2" >Kd Centroid1 :</label>
                                     <select name="kd_barang" id="kd_barang" class="form-control">
                                     <option>-- pilih --</option>
-                                    <?
+                                    <?php
                                     $i = 1;
                                     while($items = mysql_fetch_array($result)){
                                         $kd_barang = $items["nilai_KodeBarang"];
                                         $id_barang = $items["nilai_id"];
                                         ?>
-                                        <option value="<?php echo $kd_barang;?>"><?=$kd_barang?></option>
-                                        <?}?>
+                                        <option value="<?php echo $kd_barang;?>"><?php echo $kd_barang; ?></option>
+                                        <?php }?>
                                     </select>
                                     <div class="col-sm-4">
                                         <input type="text" id="value11" class="form-control" placeholder="Value 1">
@@ -93,19 +93,19 @@
                                         <input type="text" id="value13" class="form-control" placeholder="Value 3">
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-md-12 form-group"> <!-- 1. Form Kode Barang  -->
                                     <label class="control-label col-sm-2" >Kd Centroid2 :</label>
                                     <select name="kd_barang1" id="kd_barang1" class="form-control">
                                     <option>-- pilih --</option>
-                                    <?
-                                    
+                                    <?php
+
                                     while($items1 = mysql_fetch_array($result1)){
                                         $kd_barang1   = $items1["nilai_KodeBarang"];
                                         $id_barang1   = $items1["nilai_id"];
                                         ?>
-                                        <option value="<?=$kd_barang1?>"><?=$kd_barang1?></option>
-                                        <?}?>
+                                        <option value="<?php echo $kd_barang1; ?>"><?php echo $kd_barang1; ?></option>
+                                        <?php } ?>
                                     </select>
                                     <div class="col-sm-4">
                                         <input type="text" id="value21" class="form-control" placeholder="Value 1">
@@ -118,14 +118,14 @@
                                     <label class="control-label col-sm-2" >Kd Centroid3 :</label>
                                     <select name="kd_barang2" id="kd_barang2" class="form-control">
                                     <option>-- pilih --</option>
-                                    <?
-                                    
+                                    <?php
+
                                     while($items2 = mysql_fetch_array($result2)){
                                         $kd_barang2   = $items2["nilai_KodeBarang"];
                                         $id_barang2   = $items2["nilai_id"];
                                         ?>
-                                        <option value="<?=$kd_barang2?>"><?=$kd_barang2?></option>
-                                        <?}?>
+                                        <option value="<?php echo $kd_barang2; ?>"><?php echo $kd_barang2; ?></option>
+                                        <?php } ?>
                                     </select>
                                     <div class="col-sm-4">
                                         <input type="text" id="value31" class="form-control" placeholder="Value 1">
@@ -134,7 +134,7 @@
                                     </div>
                                 </div>
 
-                                
+
 
                             <form action="hasil.php" target="_BLANK" method="POST">
                                 <input type="hidden" name="id1" id="id1" required>
@@ -144,14 +144,14 @@
                             </form>
 
                            <!-- asassa -->
-                            
-                            
-    
-                            
-                            
-                            
-                            
-                                                       
+
+
+
+
+
+
+
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -160,14 +160,14 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-         
-           
+
+
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
-    <?php 
+    <?php
     } else {
     include("includes/functions.php");
     header("location:index.php");
@@ -249,7 +249,7 @@
                     });
                 });
     });
-    
+
     </script>
 
 </body>

@@ -1,4 +1,4 @@
-	<?
+	<?php
 	$server = 'localhost';
 	$username = 'root';
 	$password = '';
@@ -9,7 +9,7 @@
 	    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
 	}
 
-	$id = $_POST['kd_barang'];		
+	$id = $_POST['kd_barang'];
 	$res = array();
 
 	if (isset($id)) {
@@ -19,10 +19,8 @@
 		while($items=$result->fetch_object()){
 			$res = $items;
 		}
-		
-		echo json_encode($res);
 
-		
+		echo json_encode($res);
 		// include 'tampil_edit.php';
 	} else{
 		echo "salah";

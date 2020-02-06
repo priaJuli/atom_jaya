@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
         include("includes/session.php");
         include("includes/connection.php");
 
@@ -47,7 +47,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php 
+        <?php
             include ('templates/menu.php');
 
         ?>
@@ -64,11 +64,11 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Inputkan Data Transaksi 
+                            Inputkan Data Transaksi
                         </div>
                         <!-- /.panel-heading -->
 <div class="panel-body">
-                            <?php 
+                            <?php
                             include "bulan.php";
 
                             $bulan=date("m");
@@ -92,16 +92,16 @@
                                         $JumTrans = $run_que['kar_JumTrans'];
                                         $kJumTerj = $run_que['kar_RataPenj'];
                                         $JumTerj = $run_que ['kar_JumTerj'];
-                
+
                                         $ketemu = "Data ditemukan";
                                         $warna = "color:green;";
-                                        
+
                                     } else {
                                         $ketemu = "Data tidak ditemukan";
                                         $warna = "color:red;";
                                     }
                                 } else {
-                                   
+
                                 }
                             }
 
@@ -117,7 +117,7 @@
                                     </div>
                                 </div>
                             </form>
-                            
+
 
                             <form class="form-horizontal" role="form" action="" method="post">
                                 <div class="form-group"> <!-- 2. Form Nama Barang-->
@@ -129,15 +129,28 @@
                                     <label class="col-sm-4" style="<?php echo $warna;?>"><?php echo $ketemu;?></label>
                                 </div>
 
-                                <div class="form-group"> <!-- 3. form Bulan  --> 
+                                <div class="form-group"> <!-- 3. form Bulan  -->
                                     <label class="control-label col-sm-2" for="sel">Bulan :</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" name="bulan" placeholder="Bulan Sekarang" value="<?php echo bulan($bulan); ?>">
+                                        <select class="form-control" name="bulan">
+                                            <?php
+                                                $blnnow = 2;
+                                                for($i=1; $i<= 12; $i++){
+                                                    $abln = '01-'.$i.'-2020';
+                                                    $bulanset = bulan(date('m', strtotime($abln)));
+                                                    if($i == $blnnow){
+                                                        echo "<option selected value='".$bulanset."'>".$bulanset."</option>";
+                                                    }else{
+                                                        echo "<option value='".$bulanset."'>".$bulanset."</option>";
+                                                    }
+                                                }
+                                             ?>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="form-group"> <!-- 4. Form Stok -->
-                                    <label class="control-label col-sm-2" >Stok :</label> 
+                                    <label class="control-label col-sm-2" >Stok :</label>
                                     <div class="col-sm-4">
                                        <input type="hidden" name="Search" value="<?php echo $KodBar;?>">
                                         <input type="text" class="form-control" name="K_Stok" placeholder="input stok" value="<?php echo $StokBarang; ?>">
@@ -145,7 +158,7 @@
                                 </div>
 
                                 <div class="form-group"> <!-- 5. Form Jumlah Transaksi -->
-                                    <label class="control-label col-sm-2" >Jumlah Transaksi :</label> 
+                                    <label class="control-label col-sm-2" >Jumlah Transaksi :</label>
                                     <div class="col-sm-4">
                                         <input type="hidden" name="Search" value="<?php echo $KodBar;?>">
                                         <input type="text" class="form-control" name="Jumlah_Transaksi" placeholder="Input Jumlah Transaksi" value="<?php echo $JumTrans; ?>">
@@ -154,18 +167,18 @@
                                             <option value="<?php echo $JumTrans;?>"><?php echo $JumTrans; ?> </option>
                                             <option value="<?php echo "0";?>">non-PNS</option>
                                             <option value="<?php echo "1";?>">PNS</option>
-                                        </select>  -->                                      
+                                        </select>  -->
                                     </div>
                                 </div>
 
                                 <div class="form-group"> <!-- 6. Form Jumalh Terjual -->
-                                    <label class="control-label col-sm-2" >Jumlah Terjual :</label> 
+                                    <label class="control-label col-sm-2" >Jumlah Terjual :</label>
                                     <div class="col-sm-4">
                                         <input type="hidden" name="Search" value="<?php echo $KodBar;?>">
-                                        <input type="text" class="form-control" name="Jumlah_Terjual" placeholder="input Jumlah Terjual" value="<?php echo $JumTerj;?>">   
+                                        <input type="text" class="form-control" name="Jumlah_Terjual" placeholder="input Jumlah Terjual" value="<?php echo $JumTerj;?>">
 
-                                    
-                                      <!--   <select class="form-control" name="k_kedisiplinan" value="<?php echo $KodBar;?>">    
+
+                                      <!--   <select class="form-control" name="k_kedisiplinan" value="<?php echo $KodBar;?>">
                                             <option value="<?php echo $kJumTerj;?>"><?php echo $kJumTerj; ?> </option>
                                             <option value="<?php echo "0";?>">kurang</option>
                                             <option value="<?php echo "1";?>">baik</option>
@@ -174,12 +187,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group"> <!-- 7. Form Rata2 Penjualan -->
-                                    <label class="control-label col-sm-2" >Rata-rata Penjualan  :</label> 
+                                    <label class="control-label col-sm-2" >Rata-rata Penjualan  :</label>
                                     <div class="col-sm-4">
                                         <input type="hidden" name="Search" value="<?php echo $KodBar;?>">
                                         <input type="text" class="form-control" name="Rata_Penjualan" placeholder="input Rata-rata penjualan" value="<?php echo $kJumTerj; ?>">
 
-                                       <!-- <select class="form-control" name="k_TMT" value="<?php echo $KodBar;?>">    
+                                       <!-- <select class="form-control" name="k_TMT" value="<?php echo $KodBar;?>">
                                             <option value="<?php echo $JumTerj;?>"><?php echo $JumTerj; ?> </option>
                                             <option value="<?php echo "1";?>">kurang dari 15 tahun</option>
                                             <option value="<?php echo "2";?>">16 - 25 tahun</option>
@@ -187,9 +200,9 @@
                                         </select> -->
                                     </div>
                                 </div>
-                                
-                               
-</div>                               
+
+
+</div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-4">
                                         <button class="btn btn-primary" name="k_input"> Insert </button>
@@ -198,10 +211,10 @@
                             </form>
 
 
-                           
+
                             <br><br>
                             <div style="float:left;width:500px;">
-    
+
                             <?php
                                 if(isset($_POST['k_input']))
     {
@@ -212,7 +225,7 @@
         $kJumTrans = $_POST['Jumlah_Transaksi'];
         $kJumTerj = $_POST['Jumlah_Terjual'];
         $kRataPenj = $_POST['Rata_Penjualan'];
-        
+
         $hasil_point = $kStok+$kJumTrans+$kJumTerj+$kRataPenj;
 
         $koneksi1 = mysql_query(" insert into tbl_nilai set nilai_bulan='$kbulan', nilai_KodeBarang='$kSearch', nilai_NamaBarang='$kNamaBarang', nilai_Stok='$kStok', nilai_JumTrans='$kJumTrans',
@@ -223,14 +236,14 @@
                     <strong>Sukses!</strong> Data telah tersimpan.
         </div>
         <?php
-       
-    } 
+
+    }
 
                             ?>
-                            
-                            
-                            
-                                                       
+
+
+
+
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -239,14 +252,14 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-         
-           
+
+
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
-    <?php 
+    <?php
     } else {
     include("includes/functions.php");
     header("location:index.php");

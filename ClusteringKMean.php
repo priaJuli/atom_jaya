@@ -15,11 +15,11 @@ class ClusteringKMean {
           $this->cekObjCluster[$i] = 0;
             }
       }
-      
-      public function setClusterObjek($itr){               
+
+      public function setClusterObjek($itr){
             echo "<table width='500' cellpadding=0 cellspacing=0>
                         <tr><th colspan='100'>ITERASI ".$itr."</th></tr>
-            <tr><th>Nama Barang</th>";            
+            <tr><th>Nama Barang</th>";
             // for ($i=0;$i<count($this->objek[0]->data);$i++){
             //       echo "<th>C ".($i+1)."</th>";
             // }
@@ -30,17 +30,17 @@ class ClusteringKMean {
             for ($j=0;$j<count($this->centroidCluster);$j++){
                   echo "<th>Cluster ".($j+1)."</th>";
             }
-            echo "<th>Jarak Terpendek</th>";            
-            echo "</tr>";     
+            echo "<th>Jarak Terpendek</th>";
+            echo "</tr>";
 
 
             for ($i=0;$i<count($this->objek);$i++){
                   $this->objek[$i]->setCluster($this->centroidCluster);
-                  echo "<td>".$this->objek[$i]->data[4]."</td>";      
-                  
+                  echo "<td>".$this->objek[$i]->data[4]."</td>";
+
                   for ($j=0;$j<count($this->objek[$i]->data)-1;$j++)
                         echo "<td>".$this->objek[$i]->data[$j]."</td>";
-                              
+
                   for ($j=0;$j<count($this->centroidCluster);$j++){
                         if ($j == $this->objek[$i]->getCluster()){
                           if($j == 0){
@@ -55,15 +55,15 @@ class ClusteringKMean {
                           $cl = $j+1;
 
                         }
-                              
+
                         else  {echo "<td>".number_format($this->objek[$i]->getJarak($j),2)."</td>";}
                   }
-                  
-                  echo "<td style=\"".$warnaC."\">C".$cl."</td>";                  
+
+                  echo "<td style=\"".$warnaC."\">C".$cl."</td>";
                   echo "</tr>";
             }
-            echo "</table><br><br>";                      
-    
+            echo "</table><br><br>";
+
             // yang asli
             // for ($i=0;$i<count($this->cekObjCluster);$i++){
             //       if ($this->cekObjCluster[$i]!=$this->objek[$i]->getCluster()){ //!= false brarti ono perubahan
@@ -71,9 +71,9 @@ class ClusteringKMean {
             //             break;
             //       }
             // }
-            
+
             $this->Ratio = $this->getRatio();
-            
+
       }
 
       public function getCentroidCluster(){
@@ -88,12 +88,12 @@ class ClusteringKMean {
             echo "Nilai WCV = ".number_format($this->wcv,2)."<br>";
           echo "Ratio akhir = ".$this->getRatio()."<br>";
       }
-      
+
       public function setCentroidCluster(){
            for ($i=0;$i<count($this->centroidCluster);$i++){
                  $countObj = 0;
-                 $x = array();            
-                 
+                 $x = array();
+
                  for ($j=0;$j<count($this->objek);$j++){
                        if ($this->objek[$j]->getCluster()==$i){
                              for ($k=0;$k<count($this->objek[$j]->dataK);$k++){
@@ -103,7 +103,7 @@ class ClusteringKMean {
                              $countObj++;
                        }
                  }
-                 
+
                  for ($k=0;$k<count($this->centroidCluster[$i]);$k++){
                        if ($countObj>0)
                        {
@@ -113,7 +113,7 @@ class ClusteringKMean {
                        else{
                         echo "<font color='red'>Terdapat ketidak sesuai Nilai Awal Cluster</font><br>";
                         break;
-                       }            
+                       }
                  }
                  echo "<br>";
            }
@@ -125,7 +125,7 @@ class ClusteringKMean {
             $C1C3 = 0;
             $C2C3 = 0;
             $Wcv = 0;
-            for ($k=0; $k < count($this->objek); $k++) { 
+            for ($k=0; $k < count($this->objek); $k++) {
                 $kuad = pow($this->objek[$k]->getJarakPendek(), 2);
                 $Wcv += $kuad;
                 // echo "Jarak data".$k." terhadap cluster = ".$this->objek[$k]->getJarak()."<br>kuadrat: ".$kuad."<br>";
@@ -133,23 +133,23 @@ class ClusteringKMean {
             for ($i=0; $i < count($this->centroidCluster); $i++) {
               $p = pow($this->centroidCluster[0][$i] - $this->centroidCluster[1][$i], 2);
               $C1C2 = $C1C2 + $p;
-              
+
             }
-            // $C1C2 = sqrt($C1C2);    
+            // $C1C2 = sqrt($C1C2);
             // echo "C1C2 = ".sqrt($C1C2)."<br>";
-            
-            for ($i=0; $i < count($this->centroidCluster); $i++) { 
+
+            for ($i=0; $i < count($this->centroidCluster); $i++) {
               $p = pow($this->centroidCluster[0][$i] - $this->centroidCluster[2][$i], 2);
               $C1C3 = $C1C3 + $p;
-              
+
             }
             // $C1C3 = sqrt($C1C3);
             // echo "C1C3 = ".sqrt($C1C3)."<br>";
-            
-            for ($i=0; $i < count($this->centroidCluster); $i++) { 
+
+            for ($i=0; $i < count($this->centroidCluster); $i++) {
               $p = pow($this->centroidCluster[1][$i] - $this->centroidCluster[2][$i], 2);
               $C2C3 = $C2C3 + $p;
-              
+
             }
             // $C2C3 = sqrt($C2C3);
             // echo "C2C3 = ".sqrt($C2C3)."<br>";

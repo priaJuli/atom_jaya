@@ -199,21 +199,22 @@
                 responsive: true
         });
         $("#kd_barang").change(function() {
-                    var kd_barang = $("#kd_barang").val();
+            var kd_barang = $("#kd_barang").val();
 
-                    $.ajax({
-                        url : "get_nilai_barang.php",
-                        type : "POST",
-                        data : "kd_barang=" + kd_barang,
-                        success : function(data) {
-                            var res = JSON.parse(data);
-                            $('#value11').val(res.nilai_JumTrans);
-                            $('#value12').val(res.nilai_JumTerj);
-                            $('#value13').val(res.nilai_RataPenj);
-                            $('#id1').val(res.nilai_id);
-                        }
-                    });
-                });
+            $.ajax({
+                url : "get_nilai_barang.php",
+                type : "POST",
+                data : "kd_barang=" + kd_barang,
+                success : function(data) {
+                    var res = JSON.parse(data);
+                    $('#value11').val(res.nilai_JumTrans);
+                    $('#value12').val(res.nilai_JumTerj);
+                    $('#value13').val(res.nilai_RataPenj);
+                    $('#id1').val(res.nilai_id);
+                }
+            });
+        });
+
         $("#kd_barang1").change(function() {
                     var kd_barang1 = $("#kd_barang1").val();
 

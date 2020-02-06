@@ -71,11 +71,11 @@ if(isset($_POST["id1"]) && isset($_POST["id2"]) && isset($_POST["id3"])){
       include "objek.php";
 	  include "ClusteringKMean.php";
 	  include("includes/connection.php");
-    
+
     $centroid1 = array();
     $centroid2 = array();
     $centroid3 = array();
-      
+
       $out_nilai = mysql_query("SELECT * FROM `tbl_nilai` ORDER BY `nilai_id` ASC");
       while ($run_out = mysql_fetch_array($out_nilai)) {
         if($run_out["nilai_id"] == $id1){
@@ -109,7 +109,7 @@ if(isset($_POST["id1"]) && isset($_POST["id2"]) && isset($_POST["id3"])){
 
    //    	$objek[] = $array;
   	// }
-  		
+
 
       // $centroid = array(array(19,50,2.63), /* Centroid 1*/
       //                   array(8,9,1.13),	/* Centroid 2 */
@@ -125,11 +125,11 @@ if(isset($_POST["id1"]) && isset($_POST["id2"]) && isset($_POST["id3"])){
             Centroid Awal
           </h4>
         </div>
-      <?php  
+      <?php
       $centroid = array($centroid1, /* Centroid 1*/
                         $centroid2, /* Centroid 2 */
                         $centroid3); /* Centroid 3 */
-                    
+
       foreach ($centroid as $center) {
         echo "centroid1 -> ".$center[0]." -> ".$center[1]." -> ".$center[2]." ||<br>";
       }
@@ -150,12 +150,12 @@ if(isset($_POST["id1"]) && isset($_POST["id2"]) && isset($_POST["id3"])){
 			// for ($j=0;$j<count($data);$j++){
 			// 	$centroid[$i][$j] = $data[$j];
 			// }
-	  // }	  
-	  
+	  // }
 
-	  
-	
-	   //K-MEAN	   
+
+
+
+	   //K-MEAN
 	  echo "<div style='width:900px;float:center;'>";
       $clustering = new ClusteringKMean($objek, $centroid);
       $clustering->setClusterObjek(1);
@@ -171,7 +171,7 @@ if(isset($_POST["id1"]) && isset($_POST["id2"]) && isset($_POST["id3"])){
         echo "<br><br>";
       	$clustering->setCentroidCluster();
       	$clustering->setClusterObjek($iter);
-      	$iter++;	
+      	$iter++;
       }
       $clustering->getCentroidCluster();
 	  echo "</div>";
@@ -179,9 +179,9 @@ if(isset($_POST["id1"]) && isset($_POST["id2"]) && isset($_POST["id3"])){
 	 // $hasil_serialize = serialize($objek);
 
 
-	  
-	 
-?>	
+
+
+?>
 
 </body>
 </html>

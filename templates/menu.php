@@ -12,14 +12,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-              
+
                 <div class="navbar-brand">
                 <table border="0">
                     <tr>
                         <td><img src="images/AtomJaya.png" width="50"></td>
                         <th>ATOM JAYA GROUP</th>
                     </tr>
-                    
+
                 </table>
             </div>
             </div>
@@ -33,10 +33,10 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                       
+
                         <li><a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Keluar</a>
                         </li>
-                       
+
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -50,35 +50,35 @@
                         <li>
                             <a href="index.php"><i class="fa fa-home fa-fw"></i> Home</a>
                         </li>
-                        
+
                         <li>
                             <a href="DataProduk.php"><i class="fa fa-files-o fa-fw"></i>Data Produk </a>
                         </li>
 
                         <li>
-                            <a href="DataKlastering.php"><i class="fa fa-files-o fa-fw"></i>Data Klastering </a>                            
+                            <a href="DataKlastering.php"><i class="fa fa-files-o fa-fw"></i>Data Klastering </a>
                         </li>
-   
-                        
+
+
                          <li>
                              <a href=""><i class="fa fa-tasks fa-fw"></i>Input Data <span class="fa arrow"></span></a>
-                             
-                             <ul class="nav nav-second-level">    
+
+                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="InputDataProduk.php">Input Data Produk</a> 
+                                    <a href="InputDataProduk.php">Input Data Produk</a>
                                 </li>
-                                
-                                 <li>  
-                                        <a href="InputNilai.php"></i>Input Data Klaster</a>                    
-                                </li> 
+
+                                 <li>
+                                        <a href="InputNilai.php"></i>Input Data Klaster</a>
+                                </li>
                               </ul>
 
-                         </li>         
-  
+                         </li>
+
                         <li>
-                            <a href="Alur_sistem.php"><i class="fa fa-files-o fa-fw"></i>Alur Sistem</a>
-                        </li>                       
-                        
+                            <a href="alur_sistem.php"><i class="fa fa-files-o fa-fw"></i>Alur Sistem</a>
+                        </li>
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->

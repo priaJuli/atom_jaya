@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <?php 
+    <?php
         include("includes/session.php");
         include("includes/connection.php");
 
@@ -47,7 +47,7 @@
     <div id="wrapper">
 
         <!-- Navigation -->
-        <?php 
+        <?php
             include ('templates/menu.php');
 
         ?>
@@ -64,63 +64,63 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Inputkan Data Transaksi 
+                            Inputkan Data Transaksi
                         </div>
                         <!-- /.panel-heading -->
 <div class="panel-body">
-                            
+
                              <form class="form-horizontal" role="form" action="" method="post">
                                 <div class="form-group"> <!-- 1. Form Kode Barang  -->
                                     <label class="control-label col-sm-2" >Kode Barang :</label>
                                     <div class="col-sm-4">
                                     <input type="text" class="form-control" name="Kode_Barang" placeholder="Kode Barang">
                                     </div>
-                                    
-                                </div>
-                        
-                            
 
-                           
+                                </div>
+
+
+
+
                                 <div class="form-group"> <!-- 2. Form Nama Barang-->
                                     <label class="control-label col-sm-2" >Nama Barang :</label>
                                     <div class="col-sm-4">
                                     <input type="text" class="form-control" name="Nama_Barang" placeholder="Nama Barang">
                                     </div>
-                                   
+
                                 </div>
 
                                 <div class="form-group"> <!-- 4. Form Stok -->
-                                    <label class="control-label col-sm-2" >Stok :</label> 
+                                    <label class="control-label col-sm-2" >Stok :</label>
                                     <div class="col-sm-4">
-                                       
+
                                         <input type="text" class="form-control" name="K_Stok" placeholder="input stok" >
                                     </div>
                                 </div>
 
                                 <div class="form-group"> <!-- 5. Form Jumlah Transaksi -->
-                                    <label class="control-label col-sm-2" >Jumlah Transaksi :</label> 
+                                    <label class="control-label col-sm-2" >Jumlah Transaksi :</label>
                                     <div class="col-sm-4">
-                                        
-                                        <input type="text" class="form-control" name="Jumlah_Transaksi" placeholder="Input Jumlah Transaksi">                                      
+
+                                        <input type="text" class="form-control" name="Jumlah_Transaksi" placeholder="Input Jumlah Transaksi">
                                     </div>
                                 </div>
 
                                 <div class="form-group"> <!-- 6. Form Jumalh Terjual -->
-                                    <label class="control-label col-sm-2" >Jumlah Terjual :</label> 
+                                    <label class="control-label col-sm-2" >Jumlah Terjual :</label>
                                     <div class="col-sm-4">
-                                        
-                                        <input type="text" class="form-control" name="Jumlah_Terjual" placeholder="input Jumlah Terjual" >   
+
+                                        <input type="text" class="form-control" name="Jumlah_Terjual" placeholder="input Jumlah Terjual" >
                                     </div>
                                 </div>
                                 <div class="form-group"> <!-- 7. Form Rata2 Penjualan -->
-                                    <label class="control-label col-sm-2" >Rata-rata Penjualan  :</label> 
+                                    <label class="control-label col-sm-2" >Rata-rata Penjualan  :</label>
                                     <div class="col-sm-4">
-                                        
+
                                         <input type="text" class="form-control" name="Rata_Penjualan" placeholder="input Rata-rata penjualan">
                                     </div>
                                 </div>
-                                                               
-</div>                               
+
+</div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-4">
                                         <button class="btn btn-primary" name="k_input"> Insert </button>
@@ -129,26 +129,27 @@
                             </form>
 
 
-                           
+
                             <br><br>
                             <div style="float:left;width:500px;">
-    
+
                             <?php
                                 if(isset($_POST['k_input']))
     {
+
         $kKodBar = $_POST['Kode_Barang'];
-        
+
         $kNamaBarang = $_POST['Nama_Barang'];
         $kStok = $_POST['K_Stok'];
         $kJumTrans = $_POST['Jumlah_Transaksi'];
         $kJumTerj = $_POST['Jumlah_Terjual'];
         $kRataPenj = $_POST['Rata_Penjualan'];
-        
+
         // $hasil_point = $kStok+$kJumTrans+$kJumTerj+$kRataPenj;
 
         // $koneksi1 = mysql_query("INSERT INTO tbl_produk SET kar_KodBar='".$kKodBar."', kar_NamaBarang='".$kNamaBarang."', kar_Stok='".$kStok."', kar_JumTrans='".$kJumTrans."',
         //                         kar_JumTerj='".$kJumTerj."', kar_RataPenj='".$kRataPenj."'");
-        $koneksi1 = mysql_query("INSERT INTO tbl_produk(kar_id,kar_KodBar,kar_NamaBarang,kar_StokBarang,kar_JumTrans,kar_JumTerj,kar_RataPenj) VALUES ('','$kKodBar','$kNamaBarang','$kStok','$kJumTrans','$kJumTerj','$kRataPenj')");
+        $koneksi1 = mysql_query("INSERT INTO tbl_produk(kar_id,kar_KodBar,kar_NamaBarang,kar_StokBarang,kar_JumTrans,kar_JumTerj,kar_RataPenj) VALUES (0,'$kKodBar','$kNamaBarang','$kStok','$kJumTrans','$kJumTerj','$kRataPenj')");
         if($koneksi1){
             ?>
 
@@ -156,7 +157,11 @@
                             <strong>Sukses!</strong> Data telah tersimpan.
                 </div>
         <?php
-        }      
+      }else{
+        echo "<div class='alert alert-success'>".var_dump(mysql_error($koneksidb))."</div>";
+      }
+    }else{
+        
     }
                        ?>
                        </div>
@@ -167,14 +172,14 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-         
-           
+
+
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
-    <?php 
+    <?php
     } else {
     include("includes/functions.php");
     header("location:index.php");
